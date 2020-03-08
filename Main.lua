@@ -18,10 +18,15 @@ function dialogo(...)
     addRadioButton("Runa Dungeon", 2)
     newRow()
     addCheckBox("energia", "Deseja recarregar as energias durante a execução?", false)
+    newRow()
+    addRadioGroup("recargaDeEnergia", 1)
+    addRadioButton("Caixa de energia", 1)
+    addRadioButton("Loja", 2)
     dialogShowFullScreen("Recarregamento")
 end
 
 function recarregarEnergia(...)
+    if recargaDeEnergia == 1 then
         if exists("CaixaDePresente.jpg") then
 
             click("CaixaDePresente.jpg")
@@ -35,26 +40,26 @@ function recarregarEnergia(...)
                 click(coletar[1])
 
                 waitClick("X.jpg")
-            else
-                click("X.jpg")
-                waitClick("Loja.jpg")
-                waitClick("90.jpg")
-                waitClick("Sim.jpg")
-                waitClick("Ok.jpg")
-                waitClick("Fechar.jpg")
             end
-        elseif exists("Loja.jpg") then
-            click("Loja.jpg")
-            waitClick("90.jpg")
-            waitClick("Sim.jpg")
-            waitClick("Ok.jpg")
-            waitClick("Fechar.jpg")
         end
         
         wait(1)
         
         existsClick("Repetir.jpg")
         existsClick("Preparacao.jpg")
+    end
+
+    if recargaDeEnergia == 2 then
+        if exists("Loja.jpg") then
+            click("Loja.jpg")
+            waitClick("90.jpg")
+            waitClick("Sim.jpg")
+            waitClick("Ok.jpg")
+            waitClick("Fechar.jpg")
+            existsClick("Repetir.jpg")
+            existsClick("Preparacao.jpg")
+        end
+    end
 end
 
 function iniciarFaimon( ... )
