@@ -17,18 +17,19 @@ winCount = 0
 loseCount = 0
 
 function showBattleResult()
-  local message = ""
-  local totalBattle = loseCount + winCount
-  message = message .. [[Battles:]] .. totalBattle .. "  W:" .. winCount .. "  L:" .. loseCount
-  resultRegion:highlightOff()
-  resultRegion:highlight(message)
+    local message = ""
+    local totalBattle = loseCount + winCount
+    message = message .. [[Battles:]] .. totalBattle .. "  W:" .. winCount .. "  L:" .. loseCount
+    resultRegion:highlightOff()
+    resultRegion:highlight(message)
 end
 
 function dialogo(...)
     dialogInit()
     spinnerFarm = {
         "Dungeon",
-        "Faimon"
+        "Faimon",
+        "Toa"
     }
     spinnerEnergy = {
         "Caixa De Energia",
@@ -44,7 +45,7 @@ function dialogo(...)
     dialogShowFullScreen("Recarregamento")
 end
 
-function dialogo2( ... )
+function dialogo2(...)
     dialogInit()
     addCheckBox("mob1", "Mob 1*", false)
     addCheckBox("mob2", "Mob 2*", false)
@@ -58,17 +59,17 @@ end
 function recarregarEnergia(...)
     if energy == spinnerEnergy[1] then
         if exists("CaixaDePresente.jpg") then
-
+            
             click("CaixaDePresente.jpg")
-
+            
             wait(1)
-
+            
             if exists("Coletar.jpg") then
-
+                
                 coletar = findAll("Coletar.jpg")
-
+                
                 click(coletar[1])
-
+                
                 waitClick("X.jpg")
             end
         end
@@ -77,8 +78,9 @@ function recarregarEnergia(...)
         
         existsClick("Repetir.jpg")
         existsClick("Preparacao.jpg")
+        existsClick("IniciarBatalha.jpg")
     end
-
+    
     if energy == spinnerEnergy[2] then
         if exists("Loja.jpg") then
             click("Loja.jpg")
@@ -92,21 +94,21 @@ function recarregarEnergia(...)
     end
 end
 
-function iniciarFaimon( ... )
-
+function iniciarFaimon(...)
+    
     click("IniciarBatalha.jpg")
-
+    
     if exists("NaoEnergia.jpg") and energia == true then
         recarregarEnergia()
         waitClick("IniciarBatalha.jpg")
     end
-
+    
     wait(8)
     
     if exists("Play.jpg") then
         click("Play.jpg")
     end
-
+    
     --Variavel para sair da repetição de faimon, para ir pra tela de trocar os mob
     time = 0
     
@@ -168,7 +170,7 @@ end
 function trocandoMobsUpados(...)
     --Variavel de armazenar a quantidade de mob foi upado
     quantosMobsForamRetirados = 0
-
+    
     if mob1 == true then
         if LeftMon:exists(Pattern("15.jpg"):similar(.8)) then
             if LeftMon:exists(Pattern("1EstrelaCinza.jpg"):similar(.8)) or LeftMon:exists(Pattern("1EstrelaDourada.jpg"):similar(.8)) then
@@ -187,7 +189,7 @@ function trocandoMobsUpados(...)
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
         end
     end
-
+    
     if mob2 == true then
         if LeftMon:exists(Pattern("20.jpg"):similar(.8)) or LeftMon:exists(Pattern("20-2.jpg"):similar(.8)) then
             if LeftMon:exists(Pattern("2EstrelasCinza.jpg"):similar(.8)) or LeftMon:exists(Pattern("2EstrelasDouradas.jpg"):similar(.8)) then
@@ -206,7 +208,7 @@ function trocandoMobsUpados(...)
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
         end
     end
-
+    
     if mob3 == true then
         if LeftMon:exists(Pattern("25.jpg"):similar(.8)) then
             if LeftMon:exists(Pattern("3EstrelaCinza.jpg"):similar(.8)) or LeftMon:exists(Pattern("3EstrelaDourada.jpg"):similar(.8)) then
@@ -225,7 +227,7 @@ function trocandoMobsUpados(...)
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
         end
     end
-
+    
     if mob4 == true then
         if LeftMon:exists(Pattern("30.jpg"):similar(.8)) then
             if LeftMon:exists(Pattern("4EstrelaCinza.jpg"):similar(.8)) or LeftMon:exists(Pattern("4EstrelaDourada.jpg"):similar(.8)) then
@@ -244,7 +246,7 @@ function trocandoMobsUpados(...)
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
         end
     end
-
+    
     if mob5 == true then
         if LeftMon:exists(Pattern("35.jpg"):similar(.8)) then
             if LeftMon:exists(Pattern("5EstrelaCinza.jpg"):similar(.8)) or LeftMon:exists(Pattern("5EstrelaDourada.jpg"):similar(.8)) then
@@ -263,7 +265,7 @@ function trocandoMobsUpados(...)
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
         end
     end
-
+    
     if mob6 == true then
         if LeftMon:exists(Pattern("40.jpg"):similar(.8)) then
             if LeftMon:exists(Pattern("6EstrelaDourada.jpg"):similar(.8)) then
@@ -282,7 +284,7 @@ function trocandoMobsUpados(...)
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
         end
     end
-
+    
     if quantosMobsForamRetirados > 0 then
         moveRight()
         wait(1)
@@ -290,20 +292,19 @@ function trocandoMobsUpados(...)
         wait(1)
         moveRight()
         wait(1)
-    
+        
         test1 = findAll(Pattern("1.jpg"))
-
+        
         --Loop para colocar os mobs nao upados
         for i = 1, quantosMobsForamRetirados do
             click(test1[i])
             i = i + 1
         end
     end
-    
+
 end
 
-function 
-    playDungeon()
+function playDungeon()
     click("IniciarBatalha.jpg")
     
     wait(6)
@@ -313,11 +314,11 @@ function
     time = 0
     
     while time < 1 do
-        if exists("Vitoria.jpg") then    
+        if exists("Vitoria.jpg") then
             winCount = winCount + 1
             showBattleResult()
-            wait(2)      
-              
+            wait(2)
+            
             click("Vitoria.jpg")
             
             waitClick("Bau.jpg")
@@ -336,9 +337,57 @@ function
             loseCount = loseCount + 1
             showBattleResult()
             waitClick("Nao.jpg")
-           
+            
             waitClick("Derrota.jpg")
-           
+            
+            waitClick("Preparacao.jpg")
+            if exists("NaoEnergia.jpg") and energia == true then
+                recarregarEnergia()
+            end
+            time = time + 1
+        end
+    end
+end
+
+function playToa()
+    click("IniciarBatalha.jpg")
+
+    if exists("NaoEnergia.jpg") and energia == true then
+        recarregarEnergia()
+    end
+    
+    wait(6)
+    
+    existsClick("Play.jpg")
+    
+    time = 0
+    
+    while time < 1 do
+        if exists("Vitoria.jpg") then
+            winCount = winCount + 1
+            showBattleResult()
+            wait(2)
+            
+            click("Vitoria.jpg")
+            
+            waitClick("Bau.jpg")
+            
+            waitClick("Ok.jpg")
+            
+            wait(1)
+            
+            waitClick("Repetir.jpg")
+            
+            if exists("NaoEnergia.jpg") and energia == true then
+                recarregarEnergia()
+            end
+        
+        elseif exists("Derrota.jpg") then
+            loseCount = loseCount + 1
+            showBattleResult()
+            
+            waitClick("Derrota.jpg")
+            
             waitClick("Preparacao.jpg")
             if exists("NaoEnergia.jpg") and energia == true then
                 recarregarEnergia()
@@ -363,5 +412,7 @@ while infinito < 1 do
         trocandoMobsUpados()
     elseif farm == spinnerFarm[1] then
         playDungeon()
+    elseif farm == spinnerFarm[3] then
+        playToa()
     end
 end
