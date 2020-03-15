@@ -126,7 +126,8 @@ function iniciarFaimon(...)
                     wait(2)
                     if exists(Pattern("Sim.jpg"):similar(.5)) then
                         click(Pattern("Sim.jpg"):similar(.5))
-                        waitClick(Pattern("Ok.jpg"):similar(.8))
+                        wait(1)
+                        existsClick(Pattern("Ok.jpg"):similar(.8))
                         wait(1)
                     end
                     g = g + 1
@@ -292,12 +293,15 @@ function trocandoMobsUpados(...)
         wait(1)
         moveRight()
         wait(1)
+        moveRight()
+        wait(1)
         
         test1 = findAll(Pattern("1.jpg"))
         
         --Loop para colocar os mobs nao upados
         for i = 1, quantosMobsForamRetirados do
-            click(test1[i])
+            h = i - 1
+            click(test1[#test1 - h])
             i = i + 1
         end
     end
