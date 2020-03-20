@@ -178,12 +178,14 @@ function trocandoMobsUpados(...)
                 click(LeftMon)
             end
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
-        elseif RightMon:exists(Pattern("15.jpg"):similar(.8)) then
+        end
+        if RightMon:exists(Pattern("15.jpg"):similar(.8)) then
             if RightMon:exists(Pattern("1EstrelaCinza.jpg"):similar(.8)) or RightMon:exists(Pattern("1EstrelaDourada.jpg"):similar(.8)) then
                 click(RightMon)
             end
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
-        elseif BottomMon:exists(Pattern("15.jpg"):similar(.8)) then
+        end
+        if BottomMon:exists(Pattern("15.jpg"):similar(.8)) then
             if BottomMon:exists(Pattern("1EstrelaCinza.jpg"):similar(.8)) or BottomMon:exists(Pattern("1EstrelaDourada.jpg"):similar(.8)) then
                 click(BottomMon)
             end
@@ -197,12 +199,14 @@ function trocandoMobsUpados(...)
                 click(LeftMon)
             end
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
-        elseif RightMon:exists(Pattern("20.jpg"):similar(.8)) or RightMon:exists(Pattern("20-2.jpg"):similar(.8)) then
+        end
+        if RightMon:exists(Pattern("20.jpg"):similar(.8)) or RightMon:exists(Pattern("20-2.jpg"):similar(.8)) then
             if RightMon:exists(Pattern("2EstrelasCinza.jpg"):similar(.8)) or RightMon:exists(Pattern("2EstrelasDouradas.jpg"):similar(.8)) then
                 click(RightMon)
             end
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
-        elseif BottomMon:exists(Pattern("20.jpg"):similar(.8)) or BottomMon:exists(Pattern("20-2.jpg"):similar(.8)) then
+        end
+        if BottomMon:exists(Pattern("20.jpg"):similar(.8)) or BottomMon:exists(Pattern("20-2.jpg"):similar(.8)) then
             if BottomMon:exists(Pattern("2EstrelasCinza.jpg"):similar(.8)) or BottomMon:exists(Pattern("2EstrelasDouradas.jpg"):similar(.8)) then
                 click(BottomMon)
             end
@@ -216,12 +220,14 @@ function trocandoMobsUpados(...)
                 click(LeftMon)
             end
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
-        elseif RightMon:exists(Pattern("25.jpg"):similar(.8)) then
+        end
+        if RightMon:exists(Pattern("25.jpg"):similar(.8)) then
             if RightMon:exists(Pattern("3EstrelaCinza.jpg"):similar(.8)) or RightMon:exists(Pattern("3EstrelaDourada.jpg"):similar(.8)) then
                 click(RightMon)
             end
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
-        elseif BottomMon:exists(Pattern("25.jpg"):similar(.8)) then
+        end
+        if BottomMon:exists(Pattern("25.jpg"):similar(.8)) then
             if BottomMon:exists(Pattern("3EstrelaCinza.jpg"):similar(.8)) or BottomMon:exists(Pattern("3EstrelaDourada.jpg"):similar(.8)) then
                 click(BottomMon)
             end
@@ -235,12 +241,14 @@ function trocandoMobsUpados(...)
                 click(LeftMon)
             end
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
-        elseif RightMon:exists(Pattern("30.jpg"):similar(.8)) then
+        end
+        if RightMon:exists(Pattern("30.jpg"):similar(.8)) then
             if RightMon:exists(Pattern("4EstrelaCinza.jpg"):similar(.8)) or RightMon:exists(Pattern("4EstrelaDourada.jpg"):similar(.8)) then
                 click(RightMon)
             end
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
-        elseif BottomMon:exists(Pattern("30.jpg"):similar(.8)) then
+        end
+        if BottomMon:exists(Pattern("30.jpg"):similar(.8)) then
             if BottomMon:exists(Pattern("4EstrelaCinza.jpg"):similar(.8)) or BottomMon:exists(Pattern("4EstrelaDourada.jpg"):similar(.8)) then
                 click(BottomMon)
             end
@@ -254,12 +262,14 @@ function trocandoMobsUpados(...)
                 click(LeftMon)
             end
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
-        elseif RightMon:exists(Pattern("35.jpg"):similar(.8)) then
+        end
+        if RightMon:exists(Pattern("35.jpg"):similar(.8)) then
             if RightMon:exists(Pattern("5EstrelaCinza.jpg"):similar(.8)) or RightMon:exists(Pattern("5EstrelaDourada.jpg"):similar(.8)) then
                 click(RightMon)
             end
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
-        elseif BottomMon:exists(Pattern("35.jpg"):similar(.8)) then
+        end
+        if BottomMon:exists(Pattern("35.jpg"):similar(.8)) then
             if BottomMon:exists(Pattern("5EstrelaCinza.jpg"):similar(.8)) or BottomMon:exists(Pattern("5EstrelaDourada.jpg"):similar(.8)) then
                 click(BottomMon)
             end
@@ -273,12 +283,14 @@ function trocandoMobsUpados(...)
                 click(LeftMon)
             end
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
-        elseif RightMon:exists(Pattern("40.jpg"):similar(.8)) then
+        end
+        if RightMon:exists(Pattern("40.jpg"):similar(.8)) then
             if RightMon:exists(Pattern("6EstrelaDourada.jpg"):similar(.8)) then
                 click(RightMon)
             end
             quantosMobsForamRetirados = quantosMobsForamRetirados + 1
-        elseif BottomMon:exists(Pattern("40.jpg"):similar(.8)) then
+        end
+        if BottomMon:exists(Pattern("40.jpg"):similar(.8)) then
             if BottomMon:exists(Pattern("6EstrelaDourada.jpg"):similar(.8)) then
                 click(BottomMon)
             end
@@ -375,16 +387,20 @@ function playToa()
             click("Vitoria.jpg")
             
             waitClick("Bau.jpg")
+
+            wait(2)
             
-            waitClick("Ok.jpg")
+            click("Ok.jpg")
             
             wait(1)
             
-            waitClick("Repetir.jpg")
-            
+            waitClick("ProximaFase.jpg")
+
             if exists("NaoEnergia.jpg") and energia == true then
                 recarregarEnergia()
             end
+
+            waitClick("IniciarBatalha.jpg")
         
         elseif exists("Derrota.jpg") then
             loseCount = loseCount + 1
