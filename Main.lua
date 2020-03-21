@@ -29,7 +29,8 @@ function dialogo(...)
     spinnerFarm = {
         "Dungeon",
         "Faimon",
-        "Toa"
+        "Toa",
+        "Secreta"
     }
     spinnerEnergy = {
         "Caixa De Energia",
@@ -396,12 +397,12 @@ function playToa()
             
             waitClick("ProximaFase.jpg")
 
+            waitClick("IniciarBatalha.jpg")
+
             if exists("NaoEnergia.jpg") and energia == true then
                 recarregarEnergia()
             end
 
-            waitClick("IniciarBatalha.jpg")
-        
         elseif exists("Derrota.jpg") then
             loseCount = loseCount + 1
             showBattleResult()
@@ -413,6 +414,37 @@ function playToa()
                 recarregarEnergia()
             end
             time = time + 1
+        end
+    end
+end
+
+function playSecreta()
+    click("IniciarBatalha.jpg")
+    
+    wait(6)
+    
+    existsClick("Play.jpg")
+    
+    time = 0
+    
+    while time < 1 do
+        
+        if exists("Recompensa.jpg") then
+
+            click("Recompensa.jpg")
+
+            winCount = winCount + 1
+            showBattleResult()
+
+            waitClick("Bau.jpg")
+
+            waitClick("Ok.jpg")
+
+            waitClick("Repetir.jpg")
+                
+            if exists("NaoEnergia.jpg") and energia == true then
+                recarregarEnergia()
+            end
         end
     end
 end
@@ -434,5 +466,7 @@ while infinito < 1 do
         playDungeon()
     elseif farm == spinnerFarm[3] then
         playToa()
+    elseif farm == spinnerFarm[4] then
+        playSecreta()
     end
 end
