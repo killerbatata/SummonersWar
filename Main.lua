@@ -30,7 +30,8 @@ function dialogo(...)
         "Dungeon",
         "Faimon",
         "Toa",
-        "Secreta"
+        "Secreta",
+        "Besta"
     }
     spinnerEnergy = {
         "Caixa De Energia",
@@ -449,6 +450,37 @@ function playSecreta()
     end
 end
 
+function playBesta()
+    click("IniciarBatalha.jpg")
+    
+    wait(6)
+    
+    existsClick("Play.jpg")
+    
+    time = 0
+    
+    while time < 1 do
+        
+        if exists("Result.jpg") then
+
+            click("Result.jpg")
+
+            winCount = winCount + 1
+            showBattleResult()
+
+            waitClick("Bau2.jpg")
+
+            waitClick("Ok.jpg")
+
+            waitClick("Repetir.jpg")
+                
+            if exists("NaoEnergia.jpg") and energia == true then
+                recarregarEnergia()
+            end
+        end
+    end
+end
+
 --Variavel para o loop infinito
 infinito = 0
 
@@ -468,5 +500,7 @@ while infinito < 1 do
         playToa()
     elseif farm == spinnerFarm[4] then
         playSecreta()
+    elseif farm == spinnerFarm[5] then
+        playBesta()
     end
 end
